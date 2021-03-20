@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize')
 const Image = require('./image')
-const Product = require('./product')
+const Post = require('./product')
 const Token = require('./token')
+const Comment = require('./comment')
 const sequelize = require('./index')
 class User extends Sequelize.Model {
 }
@@ -33,8 +34,9 @@ User.init(
 )
 
 User.hasMany(Image, { foreignKey: 'userId', onDelete: 'cascade' })
-User.hasMany(Product, { foreignKey: 'userId', onDelete: 'cascade' })
+User.hasMany(Post, { foreignKey: 'userId', onDelete: 'cascade' })
 User.hasMany(Token, { foreignKey: 'userId', onDelete: 'cascade' })
+User.hasMany(Comment, { foreignKey: 'userId', onDelete: 'cascade' })
 
 
 module.exports = User

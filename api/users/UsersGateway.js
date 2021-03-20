@@ -21,6 +21,14 @@ module.exports = class UserGateway {
     return this._usersModel.findByPk(id)
   }
 
+  findByEmail(email) {
+    return this._usersModel.find({
+      where: {
+        email
+      }
+    })
+  }
+
   findAndCountAll({ pagination } = {}) {
     const query = {
       order: ['createdAt']

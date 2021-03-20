@@ -6,19 +6,12 @@ module.exports = class CreateUserRequest {
     this._confirm = request.body.confirm
   }
 
-  get username() {
-    return this._username
-  }
-
-  get email() {
-    return this._email
-  }
-
-  get password() {
-    return this._password
-  }
-
-  get confirm() {
-    return this._confirm
+  getUserData() {
+    return {
+      username: this._username,
+      email: this._email,
+      password: this._password,
+      confirm: this._confirm
+    }
   }
 }

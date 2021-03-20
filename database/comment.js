@@ -1,8 +1,7 @@
 const Sequelize = require('sequelize')
 const sequelize = require('./index')
-class Product extends Sequelize.Model {}
 
-Product.init(
+Comment.init(
   {
     id: {
       allowNull: false,
@@ -10,14 +9,12 @@ Product.init(
       autoIncrement: true,
       primaryKey: true
     },
-    label: {
-      type: Sequelize.STRING
-    },
     description: {
       type: Sequelize.TEXT
     }
   },
-  { sequelize, modelName: 'product' }
+  { sequelize, modelName: 'comment' }
 )
+
 
 module.exports = Product

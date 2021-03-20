@@ -9,7 +9,7 @@ module.exports = class HttpSender {
   }
 
   respondFailure(error) {
-    const {code, ...error}= error
+    const { code, ...error } = error
     this._response.status(error.code)
     this._response.json(error)
   }

@@ -1,27 +1,19 @@
 const validator = require('validator')
 
 module.export = class Validator {
-  constructor(values) {
-    this._values = values
+  static isNotEmail(value) {
+    return !validator.isEmail(value)
   }
 
-  checkUserData(values) {
-    return this._isNotEmail() && this._checkPassword() &&  this._checkName()
+  static checkPassword(value) {
+    return validator.isByteLength(value, { min: 6 })
   }
 
-  _isNotEmail() {
-    return !validator.isEmail(this._values.email)
+  static checkName(value) {
+    return validator.isAlpha(value)
   }
 
-  _checkPassword() {
-    return validator.isByteLength(this._values.password, { min: 6 })
-  }
-
-  _checkName(){
-    return validator.isAlpha(this._values.name)
-  }
-
-  _checkPasswordEqual() {
-    return this._values.password === this._values.confirm
+  static checkPasswordEqual(value, confirm) {
+    return value === confirm
   }
 }

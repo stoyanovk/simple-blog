@@ -4,17 +4,15 @@ const sequelize = require('./database')
 const app = require('express')()
 const router = require('./routes')
 const bodyParser = require('body-parser')
-const errorMiddleware = require('./middleware/error')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 router(app)
 
-app.use(errorMiddleware)
 
 async function start() {
   try {
-    await sequelize.sync()
+    await sequelize.sync({ force: true })
     app.listen(3001, function () {
       console.log(`Example app listening on port 3001!`)
     })
