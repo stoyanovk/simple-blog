@@ -10,9 +10,7 @@ module.exports = class UserGateway {
   update(values) {
     return this._userModel.update(values, {
       where: {
-        deletedAt: {
-          id: values.id
-        }
+        id: values.id
       }
     })
   }

@@ -33,7 +33,7 @@ User.init(
   { sequelize, modelName: 'user' }
 )
 
-User.hasMany(Image, { foreignKey: 'userId', onDelete: 'cascade' })
+User.hasOne(Image, { foreignKey: 'userId', onDelete: 'cascade' })
 User.hasMany(Post, { foreignKey: 'userId', onDelete: 'cascade' })
 User.hasMany(Token, { foreignKey: 'userId', onDelete: 'cascade' })
 User.hasMany(Comment, { foreignKey: 'userId', onDelete: 'cascade' })

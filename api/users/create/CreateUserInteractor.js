@@ -22,8 +22,12 @@ module.exports = class CreateUserInteractor {
         email: userData.email,
         password
       })
-      
-    } catch (err) {}
+      return this._responder.respondSuccess({
+        data: this._responseBuilder.build(user)
+      })
+    } catch (err) {
+      return this._responder.respondFailure(err)
+    }
   }
 
   _checkUserExisting(email) {
